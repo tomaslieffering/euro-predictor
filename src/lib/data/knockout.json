@@ -1,0 +1,185 @@
+[
+	{
+		"game": 1,
+		"teams": [
+			2,
+			3
+		],
+		"depth": 1,
+		"winner": -1
+	},
+	{
+		"game": 2,
+		"teams": [
+			4,
+			5
+		],
+		"depth": 2,
+		"winner": -1
+	},
+	{
+		"game": 3,
+		"teams": [
+			6,
+			7
+		],
+		"depth": 2,
+		"winner": -1
+	},
+	{
+		"game": 4,
+		"teams": [
+			8,
+			9
+		],
+		"depth": 3,
+		"winner": -1
+	},
+	{
+		"game": 5,
+		"teams": [
+			10,
+			11
+		],
+		"depth": 3,
+		"winner": -1
+	},
+	{
+		"game": 6,
+		"teams": [
+			12,
+			13
+		],
+		"depth": 3,
+		"winner": -1
+	},
+	{
+		"game": 7,
+		"teams": [
+			14,
+			15
+		],
+		"depth": 3,
+		"winner": -1
+	},
+	{
+		"game": 8,
+		"teams": [
+			{
+				"group": "B",
+				"place": 1
+			},
+			{
+				"group": 0,
+				"place": 3
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 9,
+		"teams": [
+			{
+				"group": "A",
+				"place": 1
+			},
+			{
+				"group": "C",
+				"place": 2
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 10,
+		"teams": [
+			{
+				"group": "F",
+				"place": 1
+			},
+			{
+				"group": 1,
+				"place": 3
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 11,
+		"teams": [
+			{
+				"group": "D",
+				"place": 2
+			},
+			{
+				"group": "E",
+				"place": 2
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 12,
+		"teams": [
+			{
+				"group": "E",
+				"place": 1
+			},
+			{
+				"group": 2,
+				"place": 3
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 13,
+		"teams": [
+			{
+				"group": "D",
+				"place": 1
+			},
+			{
+				"group": "F",
+				"place": 2
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 14,
+		"teams": [
+			{
+				"group": "C",
+				"place": 1
+			},
+			{
+				"group": 3,
+				"place": 3
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	},
+	{
+		"game": 15,
+		"teams": [
+			{
+				"group": "A",
+				"place": 2
+			},
+			{
+				"group": "B",
+				"place": 2
+			}
+		],
+		"depth": 4,
+		"winner": -1
+	}
+]

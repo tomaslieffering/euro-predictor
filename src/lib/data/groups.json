@@ -1,0 +1,152 @@
+[
+	{
+		"group": "A",
+		"teams": [
+			{
+				"country": "Germany",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Scotland",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Hungary",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Switzerland",
+				"position": 0,
+				"qualified": false
+			}
+		]
+	},
+	{
+		"group": "B",
+		"teams": [
+			{
+				"country": "Spain",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Croatia",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Italy",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Albania",
+				"position": 0,
+				"qualified": false
+			}
+		]
+	},
+	{
+		"group": "C",
+		"teams": [
+			{
+				"country": "Slovenia",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Denmark",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Serbia",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "England",
+				"position": 0,
+				"qualified": false
+			}
+		]
+	},
+	{
+		"group": "D",
+		"teams": [
+			{
+				"country": "Netherlands",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "France",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Poland",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Austria",
+				"position": 0,
+				"qualified": false
+			}
+		]
+	},
+	{
+		"group": "E",
+		"teams": [
+			{
+				"country": "Ukraine",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Slovakia",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Belgium",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Romania",
+				"position": 0,
+				"qualified": false
+			}
+		]
+	},
+	{
+		"group": "F",
+		"teams": [
+			{
+				"country": "Portugal",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Czechia",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Georgia",
+				"position": 0,
+				"qualified": false
+			},
+			{
+				"country": "Türkiye",
+				"position": 0,
+				"qualified": false
+			}
+		]
+	}
+]
