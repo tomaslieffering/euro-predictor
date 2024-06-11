@@ -6,21 +6,16 @@
 
 	type Team = {
 		country: string;
+		short: string;
 		position: number;
 		qualified: boolean;
+		icon: string;
 	};
 
 	export let group;
 	export let teams: Array<Team>;
 
 	let selected = 0;
-
-	const rankingColors = [
-		"bg-amber-300",
-		"bg-gray-300",
-		"bg-orange-200",
-		"bg-red-200",
-	];
 
 	const placeSuffix = ["st", "nd", "rd", "th"];
 
@@ -106,68 +101,74 @@
 			<RefreshCcw />
 		</button>
 	</div>
-	{#if !completed}
-		<ul
-			class="flex flex-col gap-2 py-4 border-b border-b-slate-500 border-dashed"
-		>
-			{#each teams.filter((team) => team.position === 0) as team}
-				<li
-					class="bg-white rounded border-2 border-transparent transform-all hover:-translate-y-0.5 hover:shadow"
-				>
-					<button
-						class="w-full py-4 px-4 text-left"
-						on:click={selectTeam(team)}
+	<ul
+		class="grid grid-cols-4 gap-2 py-4 border-b border-b-slate-500 border-dashed"
+	>
+		{#each teams as team}
+				{#if team.position === 0}
+					<li
+						class="bg-white rounded border-2 border-transparent transform-all hover:-translate-y-0.5 hover:shadow"
 					>
-						<span>
-							{team.country}
-						</span>
-					</button>
-				</li>
-			{/each}
-		</ul>
-	{/if}
+						<button
+							class="w-full py-4 px-4 text-left text-sm"
+							on:click={selectTeam(team)}
+						>
+							<span class="fi fi-{team.icon}"></span>
+							<span class="uppercase">
+								{team.short}
+							</span>
+						</button>
+					</li>
+				{:else}
+					<li
+						class="bg-white rounded border-2 border-transparent"
+					>
+						<div class="w-full py-4 px-4 text-left text-sm opacity-50">
+							<span class="fi fi-{team.icon}"></span>
+							<span class="uppercase">
+								{team.short}
+							</span>
+						</div>
+					</li>
+				{/if}
+		{/each}
+	</ul>
 
-	<ol class="flex flex-col gap-2 pt-4">
+	<ol class="flex flex-col gap-2 pt-4 list-decimal">
 		{#each teams
-			.filter((team) => team.position !== 0)
 			.sort(sortByPostion) as team, index}
 			<li
-				class="flex justify-between py-4 px-4 border-2 border-slate-400 rounded {rankingColors[
-					index
-				]}"
+				class="flex justify-between py-4 px-4 border-2 border-slate-400 rounded"
 				in:fly={{ y: -50, duration: 200 }}
 			>
-				<div class="flex">
-					<div
-						class="grid place-items-center h-full aspect-square rounded-full bg-white border-black border-2"
-					>
-						<span class="text-sm">{team.position}</span>
+				{#if team.position === 0}
+					{#if index === selected}
+						<span class="pr-2 text-center">Which team will come in {selected + 1}{placeSuffix[selected]} place?</span>
+						<span>
+							<CirclePlus />
+						</span>
+					{/if}
+				{:else}
+					<div class="flex">
+						<div
+							class="grid place-items-center h-full aspect-square rounded-full bg-white border-black border-2"
+						>
+							<span class="text-sm">{team.position}</span>
+						</div>
+						<span class="text-md pl-2">
+							{team.country}
+						</span>
+						<span class="fi fi-{team.icon}"></span>
 					</div>
-					<span class="text-md pl-2">
-						{team.country}
-					</span>
-				</div>
-				<button
-					class="text-slate-500 transition-all hover:text-slate-700"
-					on:click={removeTeam(team)}
-				>
-					<CircleX />
-				</button>
+					<button
+						class="text-slate-500 transition-all hover:text-slate-700"
+						on:click={removeTeam(team)}
+					>
+						<CircleX />
+					</button>
+				{/if}
 			</li>
 		{/each}
-
-		{#if !completed}
-			<li
-				class="flex justify-center items-center bg-slate-100 py-4 px-2 text-gray-500 rounded border border-slate-300 border-dashed"
-			>
-				<span class="pr-2 text-center"
-					>Which team will come in {selected + 1}{placeSuffix[selected]} place?</span
-				>
-				<span>
-					<CirclePlus />
-				</span>
-			</li>
-		{/if}
 	</ol>
 	{#if completed}
 		<div class="pt-8">

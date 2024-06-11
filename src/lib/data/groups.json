@@ -4,23 +4,31 @@
 		"teams": [
 			{
 				"country": "Germany",
+				"short": "ger",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "de"
 			},
 			{
 				"country": "Scotland",
+				"short": "sco",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "gb-sct"
 			},
 			{
 				"country": "Hungary",
+				"short": "hun",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "hu"
 			},
 			{
 				"country": "Switzerland",
+				"short": "swi",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "ch"
 			}
 		]
 	},
@@ -29,23 +37,31 @@
 		"teams": [
 			{
 				"country": "Spain",
+				"short": "esp",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "es"
 			},
 			{
 				"country": "Croatia",
+				"short": "cro",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "hr"
 			},
 			{
 				"country": "Italy",
+				"short": "ita",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "it"
 			},
 			{
 				"country": "Albania",
+				"short": "alb",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "al"
 			}
 		]
 	},
@@ -54,23 +70,31 @@
 		"teams": [
 			{
 				"country": "Slovenia",
+				"short": "slo",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "si"
 			},
 			{
 				"country": "Denmark",
+				"short": "den",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "dk"
 			},
 			{
 				"country": "Serbia",
+				"short": "ser",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "rs"
 			},
 			{
 				"country": "England",
+				"short": "eng",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "gb-eng"
 			}
 		]
 	},
@@ -79,23 +103,31 @@
 		"teams": [
 			{
 				"country": "Netherlands",
+				"short": "ned",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "nl"
 			},
 			{
 				"country": "France",
+				"short": "fra",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "fr"
 			},
 			{
 				"country": "Poland",
+				"short": "pol",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "pl"
 			},
 			{
 				"country": "Austria",
+				"short": "aut",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "at"
 			}
 		]
 	},
@@ -104,23 +136,31 @@
 		"teams": [
 			{
 				"country": "Ukraine",
+				"short": "ukr",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "ua"
 			},
 			{
 				"country": "Slovakia",
+				"short": "svk",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "sk"
 			},
 			{
 				"country": "Belgium",
+				"short": "bel",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "be"
 			},
 			{
 				"country": "Romania",
+				"short": "rom",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "ro"
 			}
 		]
 	},
@@ -129,23 +169,31 @@
 		"teams": [
 			{
 				"country": "Portugal",
+				"short": "por",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "py"
 			},
 			{
 				"country": "Czechia",
+				"short": "cze",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "cz"
 			},
 			{
 				"country": "Georgia",
+				"short": "geo",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "ge"
 			},
 			{
 				"country": "Türkiye",
+				"short": "tur",
 				"position": 0,
-				"qualified": false
+				"qualified": false,
+				"icon": "tr"
 			}
 		]
 	}

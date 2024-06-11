@@ -14,7 +14,7 @@ export const thirdChosen = writable(0);
 export const toasts: Writable<Toast[]> = writable([]);
 export const finished = derived(
 	knockouts,
-	($knockouts) => $knockouts.find((game) => game.game === 1)?.winner !== -1
+	($knockouts) => $knockouts.find((game) => game.game === 1)?.winner,
 );
 
 export const addToast = (message: string) => {
