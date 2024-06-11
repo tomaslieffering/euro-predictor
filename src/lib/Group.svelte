@@ -2,6 +2,7 @@
 	import { CircleX, CirclePlus, RefreshCcw, CircleCheck } from "lucide-svelte";
 	import { createEventDispatcher } from "svelte";
 	import { fly } from "svelte/transition";
+	import { thirdChosen } from "./store";
 
 	type Team = {
 		country: string;
@@ -54,14 +55,21 @@
 					toAdjust.qualified = true;
 				}
 			});
+		if (team.position === 3 && team.qualified) {
+			$thirdChosen -= 1; 
+		}
 		team.qualified = false;
 		team.position = 0;
 		teams = teams;
+
 		dispatch("updated");
 	};
 
 	const resetTeams = () => {
 		teams.forEach((team) => {
+			if (team.position === 3 && team.qualified) {
+				$thirdChosen -= 1; 
+			}
 			team.position = 0;
 			team.qualified = false;
 		});

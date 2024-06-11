@@ -41,13 +41,14 @@
 				//base case, find team and return
 				return getBaseTeams(game);
 			}
-			return game.teams.map((team) => {
+			const teams = game.teams.map((team) => {
 				const previous = $knockouts.find((toFind) => toFind.game === team);
 
 				if (previous && previous.winner !== -1) {
 					return getTeams(previous)[previous.winner];
 				}
 			});
+			return teams;
 		}
 	};
 </script>

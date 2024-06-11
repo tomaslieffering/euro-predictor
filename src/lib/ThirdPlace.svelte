@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { slide } from "svelte/transition";
-	import { eurosGroups } from "./store";
+	import { eurosGroups, thirdChosen } from "./store";
 	import { addToast } from "./store";
 	import { ChevronDown, CircleAlert, CircleCheck } from "lucide-svelte";
 
 	let open = true;
-	let selected = 0;
 
 	$: thirdPlaces = $eurosGroups.map((group) => {
 		return {
@@ -23,12 +22,12 @@
 				return teamInGroup.country === team.team.country;
 			});
 		if (toToggle) {
-			if (selected < 4 && !toToggle.qualified) {
+			if ($thirdChosen < 4 && !toToggle.qualified) {
 				toToggle.qualified = true;
-				selected += 1;
+				$thirdChosen += 1;
 			} else if (toToggle.qualified) {
 				toToggle.qualified = false;
-				selected -= 1;
+				$thirdChosen -= 1;
 			} else {
 				addToast("Only 4 of the third place teams can be selected!");
 			}

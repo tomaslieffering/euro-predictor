@@ -9,10 +9,15 @@
 		if (game) game.winner = index;
 		$knockouts = $knockouts;
 	};
+
+	$: if (gameInfo.winner !== -1 && !teamsInfo.find((team, index) => team && gameInfo.winner === index) ) {
+		gameInfo.winner = -1;
+		$knockouts = $knockouts;
+	}
 </script>
 
 <div
-	class="flex flex-col gap-2 rounded shadow-lg p-4 after:content-[''] bg-slate-200 transition-all"
+	class="flex flex-col gap-2 rounded shadow-lg p-4 bg-slate-200 transition-all"
 >
 	{#each teamsInfo as team, index}
 		{#if team}
