@@ -58,13 +58,16 @@
 					<li>
 						<button
 							on:click={toggleTeam(thirdPlace)}
-							class="flex justify-center w-full rounded border-2 {thirdPlace
+							class="flex justify-center shadow-md rounded h-full w-full {thirdPlace
 								.team.qualified
 								? 'bg-green-300'
-								: 'bg-slate-300'} border-slate-400 py-4 px-4 transition-all hover:bg-green-200 hover:border-green-500"
+								: 'bg-white'} py-4 px-4 transition-all hover:bg-green-200 hover:border-green-500"
 						>
-							<span class="pr-2"
-								>Group {thirdPlace.group}: {thirdPlace.team.country}
+							<span>Group {thirdPlace.group}: 
+								<span class="font-bold pl-2">
+									<span class="fi fi-{thirdPlace.team.icon}"></span>
+										{thirdPlace.team.country}
+								</span>
 							</span>
 							{#if thirdPlace.team.qualified}
 								<CircleCheck class="text-green-700" />
@@ -73,7 +76,7 @@
 					</li>
 				{:else}
 					<li
-						class="flex justify-center items-center text-center bg-slate-100 py-4 px-2 text-gray-500 rounded border border-slate-300 border-dashed"
+						class="bg-white opacity-50 flex justify-center items-center text-center bg-slate-100 py-4 px-2 text-gray-500 rounded border border-slate-300 border-dashed"
 					>
 						<span class="pr-2"
 							>Finish your Group {thirdPlace.group} selections</span

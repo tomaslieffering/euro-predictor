@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        space: ['"Space Mono"'],
+        roboto: ['"Roboto Slab"'],
+      },
+      colors : {
+        primary: '#143cdb',
+        primaryhover: '#1236C5',
       },
     },
   },

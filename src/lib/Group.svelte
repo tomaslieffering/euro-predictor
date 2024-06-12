@@ -15,7 +15,7 @@
 	export let group;
 	export let teams: Array<Team>;
 
-	let selected = 0;
+	let selected = teams.filter((team) => team.position !== 0).length;
 
 	const placeSuffix = ["st", "nd", "rd", "th"];
 
@@ -83,7 +83,6 @@
 	};
 
 	$: completed = selected >= teams.length;
-	$: completedColor = completed ? "bg-slate-300" : "bg-slate-200";
 	$: if (completed) {
 		dispatch("finished");
 	} else {
@@ -91,11 +90,18 @@
 	}
 </script>
 
-<div class="rounded shadow-lg p-4 transition-all {completedColor}">
-	<div class="flex items-center justify-between">
-		<h2 class="text-lg font-bold">Group {group}</h2>
+<div class="rounded shadow-lg p-4 transition-all bg-white">
+	<div class="flex items-center">
+		<div class="flex flex-grow">
+			<h2 class="text-lg font-bold">Group {group}</h2>
+			{#if completed}
+				<div class="flex items-center text-green-500 pl-2">
+					<CircleCheck />
+				</div>
+			{/if}
+		</div>
 		<button
-			class="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+			class="flex items-center bg-primary hover:bg-primaryhover text-white font-bold py-2 px-4 rounded-full"
 			on:click={resetTeams}
 		>
 			<RefreshCcw />
@@ -105,81 +111,77 @@
 		class="grid grid-cols-4 gap-2 py-4 border-b border-b-slate-500 border-dashed"
 	>
 		{#each teams as team}
-				{#if team.position === 0}
-					<li
-						class="bg-white rounded border-2 border-transparent transform-all hover:-translate-y-0.5 hover:shadow"
+			{#if team.position === 0}
+				<li
+					class="bg-gray-100 h-12 rounded border-2 border-transparent transform-all hover:-translate-y-0.5 hover:shadow"
+				>
+					<button
+						class="flex justify-center items-center h-full w-full text-sm"
+						on:click={selectTeam(team)}
 					>
-						<button
-							class="w-full py-4 px-4 text-left text-sm"
-							on:click={selectTeam(team)}
-						>
-							<span class="fi fi-{team.icon}"></span>
-							<span class="uppercase">
-								{team.short}
-							</span>
-						</button>
-					</li>
-				{:else}
-					<li
-						class="bg-white rounded border-2 border-transparent"
-					>
-						<div class="w-full py-4 px-4 text-left text-sm opacity-50">
-							<span class="fi fi-{team.icon}"></span>
-							<span class="uppercase">
-								{team.short}
-							</span>
-						</div>
-					</li>
-				{/if}
+						<span class="fi fi-{team.icon}"></span>
+						<span class="uppercase pl-2">
+							{team.short}
+						</span>
+					</button>
+				</li>
+			{:else}
+				<li
+					class="bg-gray-100 h-12 rounded border-2 border-transparent opacity-50"
+				>
+					<div class="flex justify-center items-center h-full w-full text-sm">
+						<span class="fi fi-{team.icon}"></span>
+						<span class="uppercase pl-2">
+							{team.short}
+						</span>
+					</div>
+				</li>
+			{/if}
 		{/each}
 	</ul>
 
-	<ol class="flex flex-col gap-2 pt-4 list-decimal">
+	<ol class="flex flex-col py-4">
 		{#each teams
-			.sort(sortByPostion) as team, index}
+			.sort(sortByPostion).filter((team) => team.position !== 0) as team, index}
 			<li
-				class="flex justify-between py-4 px-4 border-2 border-slate-400 rounded"
+				class="flex justify-between py-4 px-4 border-b-2 border-slate-400
+				{index <= 1 ? "bg-green-100": ""}"
 				in:fly={{ y: -50, duration: 200 }}
 			>
-				{#if team.position === 0}
-					{#if index === selected}
-						<span class="pr-2 text-center">Which team will come in {selected + 1}{placeSuffix[selected]} place?</span>
-						<span>
-							<CirclePlus />
-						</span>
-					{/if}
-				{:else}
+
 					<div class="flex">
-						<div
-							class="grid place-items-center h-full aspect-square rounded-full bg-white border-black border-2"
-						>
-							<span class="text-sm">{team.position}</span>
-						</div>
+						<span class="pr-2">
+							{team.position}.
+						</span>
+						<span class="fi fi-{team.icon}"></span>
 						<span class="text-md pl-2">
 							{team.country}
 						</span>
-						<span class="fi fi-{team.icon}"></span>
 					</div>
 					<button
-						class="text-slate-500 transition-all hover:text-slate-700"
+						class="text-slate-500 transition-all hover:text-red-500"
 						on:click={removeTeam(team)}
 					>
 						<CircleX />
 					</button>
-				{/if}
 			</li>
 		{/each}
+		{#each {length: teams.length - selected} as _, index}
+			<li class="py-4 px-4 border-b-2 border-slate-400 opacity-50">
+				<div class="flex">
+					<span>
+						{index + selected + 1}.
+					</span>
+					{#if index === selected + (teams.length - (teams.length + selected))}
+						<span class="pl-2 text-left flex-grow">Select the {selected + 1}{placeSuffix[selected]} place team</span>
+						<span>
+							<CirclePlus />
+						</span>
+					{/if}
+				</div>
+				
+			</li>
+		{/each}
+		
 	</ol>
-	{#if completed}
-		<div class="pt-8">
-			<span
-				class="flex justify-center bg-slate-100 py-4 px-4 text-gray-500 rounded border border-slate-300 border-dashed"
-			>
-				All teams selected!
-				<span class="text-green-500 pl-2">
-					<CircleCheck />
-				</span>
-			</span>
-		</div>
-	{/if}
 </div>

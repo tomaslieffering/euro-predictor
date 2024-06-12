@@ -29,12 +29,15 @@
 		class="w-full text-left flex justify-between items-center"
 		on:click={toggle}
 	>
-		<h2 class="text-2xl py-8">Group stage</h2>
+		<div class="flex items-end">
+			<h2 class="text-2xl font-bold capitalize py-8">Group stage:</h2>
+			<span class="text-lg text-gray-400 py-8 pl-4 italic">Select the order of each group:</span>
+		</div>
 		<ChevronDown class="transition-all {open ? 'rotate-180' : ''}" />
 	</button>
 	{#if open}
 		<div
-			class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-rows-2 lg:grid-cols-3 pb-8"
+			class="grid gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-rows-2 xl:grid-cols-3 pb-8"
 			transition:slide
 		>
 			{#each $eurosGroups as group}

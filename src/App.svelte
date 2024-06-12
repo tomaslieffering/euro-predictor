@@ -4,14 +4,15 @@
   import Knockout from "./lib/Knockout.svelte";
   import ThirdPlace from "./lib/ThirdPlace.svelte";
   import Toasts from "./lib/components/Toasts.svelte";
+  import Header from "./lib/Header.svelte";
 </script>
 
-<main class="container mx-auto px-8 font-space">
-  <h1>Euros Predictor</h1>
-  <span class="fi fi-gr"></span>
-
-  <GroupStage />
-  <ThirdPlace />
-  <Knockout />
-  <Toasts />
+<Header />
+<main class="bg-gray-100">
+  <div class="container mx-auto px-8 font-roboto">
+    <GroupStage />
+    <ThirdPlace />
+    <Knockout />
+    <Toasts />
+  </div>
 </main>
