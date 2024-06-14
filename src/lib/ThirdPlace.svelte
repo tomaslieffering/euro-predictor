@@ -67,7 +67,7 @@
 								<span class="font-bold pl-2">
 									<span class="fi fi-{thirdPlace.team.icon}"></span>
 										{thirdPlace.team.country}
-								</span>
+									</span>
 							</span>
 							{#if thirdPlace.team.qualified}
 								<CircleCheck class="text-green-700" />
