@@ -10,7 +10,10 @@
 		$knockouts = $knockouts;
 	};
 
-	$: if (gameInfo.winner !== -1 && !teamsInfo.find((team, index) => team && gameInfo.winner === index) ) {
+	$: if (
+		gameInfo.winner !== -1 &&
+		!teamsInfo.find((team, index) => team && gameInfo.winner === index)
+	) {
 		gameInfo.winner = -1;
 		$knockouts = $knockouts;
 	}

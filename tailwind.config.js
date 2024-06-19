@@ -4,11 +4,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ['"Roboto Slab"'],
+        roboto: ['"Inter"'],
       },
-      colors : {
+      colors: {
         primary: '#143cdb',
         primaryhover: '#1236C5',
+        secondary: '#213690'
       },
     },
   },

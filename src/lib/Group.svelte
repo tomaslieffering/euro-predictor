@@ -51,7 +51,7 @@
 				}
 			});
 		if (team.position === 3 && team.qualified) {
-			$thirdChosen -= 1; 
+			$thirdChosen -= 1;
 		}
 		team.qualified = false;
 		team.position = 0;
@@ -63,7 +63,7 @@
 	const resetTeams = () => {
 		teams.forEach((team) => {
 			if (team.position === 3 && team.qualified) {
-				$thirdChosen -= 1; 
+				$thirdChosen -= 1;
 			}
 			team.position = 0;
 			team.qualified = false;
@@ -120,7 +120,7 @@
 						on:click={selectTeam(team)}
 					>
 						<span class="fi fi-{team.icon}"></span>
-						<span class="uppercase pl-2">
+						<span class="uppercase pl-2 font-bold">
 							{team.short}
 						</span>
 					</button>
@@ -142,46 +142,46 @@
 
 	<ol class="flex flex-col py-4">
 		{#each teams
-			.sort(sortByPostion).filter((team) => team.position !== 0) as team, index}
+			.sort(sortByPostion)
+			.filter((team) => team.position !== 0) as team, index}
 			<li
 				class="flex justify-between py-4 px-4 border-b-2 border-slate-400
-				{index <= 1 ? "bg-green-100": ""}"
+				{index <= 1 ? 'bg-green-100' : ''}"
 				in:fly={{ y: -50, duration: 200 }}
 			>
-
-					<div class="flex">
-						<span class="pr-2">
-							{team.position}.
-						</span>
-						<span class="fi fi-{team.icon}"></span>
-						<span class="text-md pl-2">
-							{team.country}
-						</span>
-					</div>
-					<button
-						class="text-slate-500 transition-all hover:text-red-500"
-						on:click={removeTeam(team)}
-					>
-						<CircleX />
-					</button>
+				<div class="flex">
+					<span class="pr-2">
+						{team.position}.
+					</span>
+					<span class="fi fi-{team.icon}"></span>
+					<span class="text-md pl-2 font-semibold">
+						{team.country}
+					</span>
+				</div>
+				<button
+					class="text-gray-500 transition-all hover:text-red-500"
+					on:click={removeTeam(team)}
+				>
+					<CircleX class="" />
+				</button>
 			</li>
 		{/each}
-		{#each {length: teams.length - selected} as _, index}
+		{#each { length: teams.length - selected } as _, index}
 			<li class="py-4 px-4 border-b-2 border-slate-400 opacity-50">
 				<div class="flex">
 					<span>
 						{index + selected + 1}.
 					</span>
 					{#if index === selected + (teams.length - (teams.length + selected))}
-						<span class="pl-2 text-left flex-grow">Select the {selected + 1}{placeSuffix[selected]} place team</span>
+						<span class="pl-2 text-left flex-grow"
+							>Select the {selected + 1}{placeSuffix[selected]} place team</span
+						>
 						<span>
 							<CirclePlus />
 						</span>
 					{/if}
 				</div>
-				
 			</li>
 		{/each}
-		
 	</ol>
 </div>

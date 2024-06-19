@@ -45,7 +45,12 @@
 		class="w-full text-left flex justify-between items-center"
 		on:click={toggle}
 	>
-		<h2 class="text-2xl py-8">Best third place</h2>
+		<div class="flex items-end">
+			<h2 class="text-2xl font-bold capitalize py-8">Best third place:</h2>
+			<span class="text-lg text-gray-400 py-8 pl-4 italic"
+				>Select the four third place teams who you think will perform the best:</span
+			>
+		</div>
 		<ChevronDown class="transition-all {open ? 'rotate-180' : ''}" />
 	</button>
 	{#if open}
@@ -58,20 +63,23 @@
 					<li>
 						<button
 							on:click={toggleTeam(thirdPlace)}
-							class="flex justify-center shadow-md rounded h-full w-full {thirdPlace
-								.team.qualified
-								? 'bg-green-300'
-								: 'bg-white'} py-4 px-4 transition-all hover:bg-green-200 hover:border-green-500"
+							class="{thirdPlace.team.qualified
+								? 'bg-green-200 hover:bg-green-300'
+								: 'hover:bg-gray-100'} 
+								py-4 px-4 transition-all border border-gray-300 hover:border-gray-400 flex justify-center shadow-md rounded h-full w-full"
 						>
-							<span>Group {thirdPlace.group}: 
-								<span class="font-bold pl-2">
-									<span class="fi fi-{thirdPlace.team.icon}"></span>
-										{thirdPlace.team.country}
-									</span>
-							</span>
-							{#if thirdPlace.team.qualified}
-								<CircleCheck class="text-green-700" />
-							{/if}
+							<div class="flex items-center justify-centerpx-2">
+								<span class="pr-2">
+									Group {thirdPlace.group}:
+								</span>
+								<span class="fi fi-{thirdPlace.team.icon}"></span>
+								<span class="px-2 font-bold">
+									{thirdPlace.team.country}
+								</span>
+								{#if thirdPlace.team.qualified}
+									<CircleCheck class="text-green-500" />
+								{/if}
+							</div>
 						</button>
 					</li>
 				{:else}
