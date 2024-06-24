@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { X } from "lucide-svelte";
+	import ConfettiPop from "./ConfettiPop.svelte";
 	export let showModal: boolean;
 
 	let dialog: HTMLDialogElement;
@@ -8,15 +9,15 @@
 </script>
 
 <dialog
-	class="rounded-lg w-1/2"
+	class="rounded-lg shadow-lg w-1/2 z-10 overflow-visible"
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
 >
 	<div>
 		<div
-			class="flex items-center justify-between p-4 md:p-5 border-b rounded-t"
+			class="flex items-center justify-between p-4 md:p-5 border-b rounded-t-lg bg-gradient-to-r from-primary to-secondary"
 		>
-			<h3 class="text-xl font-semibold text-gray-900">
+			<h3 class="text-xl font-semibold text-white">
 				<slot name="header" />
 			</h3>
 			<button
@@ -30,15 +31,17 @@
 		<hr />
 
 		<div
-			class="flex items-center justify-between p-4 md:p-5 border-b rounded-t"
+			class="flex overflow-hidden py-4 bg-gradient-to-r from-white to-gray-200"
 		>
-			<slot />
+			<div class="flex items-center justify-between px-4">
+				<slot />
+			</div>
+			<slot name="flag" />
 		</div>
+
 		<hr />
-		<div
-			class="flex items-center justify-between p-4 md:p-5 border-b rounded-t"
-		>
-			<!-- <slot name="footer" /> -->
-		</div>
+
+		<slot name="footer" />
 	</div>
 </dialog>
+<ConfettiPop active={showModal} />

@@ -1,18 +1,29 @@
 <script lang="ts">
 	import { slide } from "svelte/transition";
 	import { eurosGroups, knockouts, finished } from "./store";
+	import euros from "./data/groups.json";
+	import knockout from "./data/knockout.json";
 	import KnockoutGame from "./KnockoutGame.svelte";
 	import WinnerModal from "./components/WinnerModal.svelte";
-	import { ChevronDown, RefreshCcw } from "lucide-svelte";
+	import ConfettiPop from "./components/ConfettiPop.svelte";
+	import {
+		ChevronDown,
+		RefreshCcw,
+		SquareArrowOutUpRight,
+	} from "lucide-svelte";
 
 	let open = true;
 	let showModal = false;
-	let final;
 
 	const places = [1, 2, 3];
 
 	const toggle = () => {
 		open = !open;
+	};
+
+	$: resetPredictor = () => {
+		knockouts.set(knockout);
+		eurosGroups.set(euros);
 	};
 
 	$: placings = places.map((place) => {
@@ -60,7 +71,6 @@
 		$finished !== undefined && $finished !== -1
 			? getTeams($knockouts.find((game) => game.game === 1))[$finished]
 			: undefined;
-	$: console.log(winner);
 </script>
 
 <div class="border-b-2 border-slate-500">
@@ -81,12 +91,13 @@
 		<div transition:slide class="flex flex-col gap-16">
 			<div class="flex flex-col">
 				<span class="text-xl font-bold pb-8">Rounds of 16:</span>
-				<div class="grid grid-cols-4 gap-4 h-full">
+				<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 h-full">
 					{#each $knockouts.filter((game) => game.depth === 4) as game}
 						<KnockoutGame teamsInfo={getTeams(game)} gameInfo={game} />
 					{/each}
 				</div>
 			</div>
+
 			<div class="flex flex-col">
 				<span class="text-xl font-bold pb-8">Quarter finals:</span>
 				<div class="grid grid-cols-4 justify-around gap-4 h-full">
@@ -95,14 +106,16 @@
 					{/each}
 				</div>
 			</div>
+
 			<div class="flex flex-col pb-8">
-				<span class="text-xl font-bold">Semi finals:</span>
-				<div class="flex flex-col justify-around gap-4 h-full">
+				<span class="text-xl font-bold pb-8">Semi finals:</span>
+				<div class="grid grid-cols-2 gap-4 h-full">
 					{#each $knockouts.filter((game) => game.depth === 2) as game}
 						<KnockoutGame teamsInfo={getTeams(game)} gameInfo={game} />
 					{/each}
 				</div>
 			</div>
+
 			<div class="flex flex-col pb-8">
 				<span class="text-xl font-bold pb-8">Final:</span>
 				<div class="flex flex-col justify-center h-full">
@@ -114,6 +127,7 @@
 		</div>
 	{/if}
 </div>
+
 <WinnerModal bind:showModal>
 	<span slot="header">
 		{#if winner}
@@ -131,13 +145,28 @@
 		</span>
 	{/if}
 
-	<div slot="footer">
-		{#if winner}
+	<div
+		slot="flag"
+		class="flex rounded-full shadow-xl w-1/3 aspect-square overflow-hidden translate-x-1/2 fib fi-{winner
+			? winner.team.icon
+			: ''} fis"
+	></div>
+
+	<span slot="footer">
+		<div class="flex gap-4 justify-end w-full p-4">
+			<button
+				on:click={resetPredictor}
+				class="flex items-center bg-primary hover:bg-primaryhover text-white font-bold py-2 px-4 rounded-full"
+			>
+				<span class="pr-2"> Redo predictions </span>
+				<RefreshCcw />
+			</button>
 			<button
 				class="flex items-center bg-primary hover:bg-primaryhover text-white font-bold py-2 px-4 rounded-full"
 			>
-				<RefreshCcw />
+				<span class="pr-2"> Share predictions</span>
+				<SquareArrowOutUpRight />
 			</button>
-		{/if}
-	</div>
+		</div>
+	</span>
 </WinnerModal>

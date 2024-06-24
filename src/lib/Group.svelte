@@ -167,7 +167,7 @@
 			</li>
 		{/each}
 		{#each { length: teams.length - selected } as _, index}
-			<li class="py-4 px-4 border-b-2 border-slate-400 opacity-50">
+			<li class="py-4 px-4 border-b-2 border-gray-400 opacity-50">
 				<div class="flex">
 					<span>
 						{index + selected + 1}.

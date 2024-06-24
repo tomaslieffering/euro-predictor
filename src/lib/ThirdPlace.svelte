@@ -66,7 +66,7 @@
 							class="{thirdPlace.team.qualified
 								? 'bg-green-200 hover:bg-green-300'
 								: 'hover:bg-gray-100'} 
-								py-4 px-4 transition-all border border-gray-300 hover:border-gray-400 flex justify-center shadow-md rounded h-full w-full"
+								py-4 px-4 transition-all border border-gray-300 hover:border-gray-400 hover:-translate-y-0.5 flex justify-center shadow-md rounded h-full w-full"
 						>
 							<div class="flex items-center justify-centerpx-2">
 								<span class="pr-2">
