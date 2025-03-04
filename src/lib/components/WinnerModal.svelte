@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { X } from "lucide-svelte";
+	import { X, Trophy } from "lucide-svelte";
 	import ConfettiPop from "./ConfettiPop.svelte";
 	export let showModal: boolean;
 
@@ -17,8 +17,9 @@
 		<div
 			class="flex items-center justify-between p-4 md:p-5 border-b rounded-t-lg bg-gradient-to-r from-primary to-secondary"
 		>
-			<h3 class="text-xl font-semibold text-white">
+			<h3 class="text-xl font-semibold text-white flex items-center">
 				<slot name="header" />
+				<Trophy />
 			</h3>
 			<button
 				on:click={() => dialog.close()}

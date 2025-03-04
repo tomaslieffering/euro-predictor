@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from "svelte";
-	import { fade, fly } from "svelte/transition";
+	import { fly } from "svelte/transition";
 	import { CircleX, CircleAlert } from "lucide-svelte";
 
 	const dispatch = createEventDispatcher();
@@ -8,7 +8,7 @@
 
 <article
 	role="alert"
-	class="z-10 flex py-4 px-8 bg-red-500 text-white rounded shadow-lg"
+	class="relative z-50 flex py-4 px-8 bg-red-500 text-white rounded shadow-lg"
 	out:fly={{ x: 50, duration: 200 }}
 	in:fly={{ y: 50, duration: 200 }}
 >

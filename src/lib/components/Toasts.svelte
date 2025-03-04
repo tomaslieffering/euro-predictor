@@ -8,7 +8,11 @@
 		class="fixed bottom-0 right-0 flex flex-col items-end gap-3 pb-8 pr-8"
 	>
 		{#each $toasts as toast (toast.id)}
-			<Toast on:dismiss={() => dismissToast(toast.id)}>{toast.message}</Toast>
+			<Toast on:dismiss={() => dismissToast(toast.id)}>
+				<span>
+					{toast.message}
+				</span>
+			</Toast>
 		{/each}
 	</section>
 {/if}

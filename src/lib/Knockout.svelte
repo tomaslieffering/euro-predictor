@@ -5,12 +5,12 @@
 	import knockout from "./data/knockout.json";
 	import KnockoutGame from "./KnockoutGame.svelte";
 	import WinnerModal from "./components/WinnerModal.svelte";
-	import ConfettiPop from "./components/ConfettiPop.svelte";
 	import {
 		ChevronDown,
 		RefreshCcw,
 		SquareArrowOutUpRight,
 	} from "lucide-svelte";
+	import { compressToBase64 } from "lz-string";
 
 	let open = true;
 	let showModal = false;
@@ -20,6 +20,21 @@
 	const toggle = () => {
 		open = !open;
 	};
+
+	const getCompressedString = () => {
+		const state = {
+			groups: $eurosGroups,
+			knockout: $knockouts,
+		};
+		return encodeURIComponent(compressToBase64(JSON.stringify(state)));
+	};
+
+	async function copyURLToClipboard() {
+		const url = `${window.location.href.slice(0, -1)}?prediction=${getCompressedString()}`;
+		try {
+			await navigator.clipboard.writeText(url);
+		} catch (err) {}
+	}
 
 	$: resetPredictor = () => {
 		knockouts.set(knockout);
@@ -88,9 +103,9 @@
 		<ChevronDown class="transition-all {open ? 'rotate-180' : ''}" />
 	</button>
 	{#if open}
-		<div transition:slide class="flex flex-col gap-16">
-			<div class="flex flex-col">
-				<span class="text-xl font-bold pb-8">Rounds of 16:</span>
+		<div transition:slide class="flex flex-col gap-8">
+			<div class="flex flex-col pb-8 border-b-2 border-dashed border-gray-300">
+				<span class="text-xl font-bold pb-4">Rounds of 16:</span>
 				<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 h-full">
 					{#each $knockouts.filter((game) => game.depth === 4) as game}
 						<KnockoutGame teamsInfo={getTeams(game)} gameInfo={game} />
@@ -98,8 +113,8 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col">
-				<span class="text-xl font-bold pb-8">Quarter finals:</span>
+			<div class="flex flex-col pb-8 border-b-2 border-dashed border-gray-300">
+				<span class="text-xl font-bold pb-4">Quarter finals:</span>
 				<div class="grid grid-cols-4 justify-around gap-4 h-full">
 					{#each $knockouts.filter((game) => game.depth === 3) as game}
 						<KnockoutGame teamsInfo={getTeams(game)} gameInfo={game} />
@@ -107,8 +122,8 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col pb-8">
-				<span class="text-xl font-bold pb-8">Semi finals:</span>
+			<div class="flex flex-col pb-8 border-b-2 border-dashed border-gray-300">
+				<span class="text-xl font-bold pb-4">Semi finals:</span>
 				<div class="grid grid-cols-2 gap-4 h-full">
 					{#each $knockouts.filter((game) => game.depth === 2) as game}
 						<KnockoutGame teamsInfo={getTeams(game)} gameInfo={game} />
@@ -117,7 +132,7 @@
 			</div>
 
 			<div class="flex flex-col pb-8">
-				<span class="text-xl font-bold pb-8">Final:</span>
+				<span class="text-xl font-bold pb-4">Final:</span>
 				<div class="flex flex-col justify-center h-full">
 					{#each $knockouts.filter((game) => game.depth === 1) as game}
 						<KnockoutGame teamsInfo={getTeams(game)} gameInfo={game} />
@@ -129,7 +144,7 @@
 </div>
 
 <WinnerModal bind:showModal>
-	<span slot="header">
+	<span class="pr-2" slot="header">
 		{#if winner}
 			<span class="font-normal">Your winner is</span>
 			<span class="font-bold">
@@ -162,6 +177,7 @@
 				<RefreshCcw />
 			</button>
 			<button
+				on:click={copyURLToClipboard}
 				class="flex items-center bg-primary hover:bg-primaryhover text-white font-bold py-2 px-4 rounded-full"
 			>
 				<span class="pr-2"> Share predictions</span>

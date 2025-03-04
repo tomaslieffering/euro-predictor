@@ -64,8 +64,8 @@
 						<button
 							on:click={toggleTeam(thirdPlace)}
 							class="{thirdPlace.team.qualified
-								? 'bg-green-200 hover:bg-green-300'
-								: 'hover:bg-gray-100'} 
+								? 'bg-green-100 hover:bg-green-200'
+								: 'bg-white hover:bg-gray-100'} 
 								py-4 px-4 transition-all border border-gray-300 hover:border-gray-400 hover:-translate-y-0.5 flex justify-center shadow-md rounded h-full w-full"
 						>
 							<div class="flex items-center justify-centerpx-2">

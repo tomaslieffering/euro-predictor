@@ -26,24 +26,26 @@
 		{#if team}
 			<div
 				class="{index === gameInfo.winner
-					? 'bg-green-100 font-bold hover:bg-green-300'
+					? 'bg-green-100 font-bold hover:bg-green-200'
 					: 'bg-white'} border border-gray-300 hover:border-gray-400 flex items-center rounded transform-all hover:-translate-y-0.5 hover:shadow"
 			>
 				<button
 					on:click={toggleTeam(index)}
 					class="relative w-full h-full py-2 px-2"
 				>
-					<div class="z-10 relative">
-						<span class="pr-2 fi fi-{team.team.icon}"></span>
-						{team.team.country}
-					</div>
 					{#if index === gameInfo.winner}
 						<div
-							class=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+							class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
 						>
-							<CircleCheck class="-z-0 text-green-400 w-20 h-20" />
+							<CircleCheck class="relative -z-10 text-green-300 w-20 h-20" />
 						</div>
 					{/if}
+					<div class="flex justify-center">
+						<span class="fi fi-{team.team.icon}"></span>
+						<span class="relative pl-2">
+							{team.team.country}
+						</span>
+					</div>
 				</button>
 			</div>
 		{:else}
