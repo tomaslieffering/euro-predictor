@@ -62,7 +62,7 @@
 				{#if thirdPlace.team}
 					<li>
 						<button
-							on:click={toggleTeam(thirdPlace)}
+							on:click={() => toggleTeam(thirdPlace)}
 							class="{thirdPlace.team.qualified
 								? 'bg-green-100 hover:bg-green-200'
 								: 'bg-white hover:bg-gray-100'} 
